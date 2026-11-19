@@ -2787,7 +2787,7 @@ export default function CVBuilderClient({
   // Style Settings
   const [accentColor, setAccentColor] = useState<'blue' | 'yellow' | 'emerald' | 'slate' | 'rose'>('blue');
   const [fontFamily, setFontFamily] = useState<CVFontFamily>('inter');
-  const [zoom, setZoom] = useState<number>(100);
+  const [zoom, setZoom] = useState<number>(90);
   const [newSkillText, setNewSkillText] = useState('');
   const [isAddingSkill, setIsAddingSkill] = useState(false);
 
@@ -9983,8 +9983,15 @@ export default function CVBuilderClient({
         </div>
       )}
 
-      {/* ================= MAIN CV WORKSPACE CANVAS ================= */}
-      <main className="flex-1 h-full overflow-y-auto relative flex flex-col items-center bg-[#0B0F19] p-4 sm:p-6 no-scrollbar">
+      {/* ================= MAIN CV WORKSPACE CANVAS (FIGMA/MIRO DARK DOT GRID) ================= */}
+      <main
+        className="flex-1 h-full overflow-y-auto relative flex flex-col items-center py-8 sm:py-12 px-4 sm:px-10 pb-32 no-scrollbar transition-all"
+        style={{
+          backgroundColor: '#0B0F17',
+          backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px)',
+          backgroundSize: '20px 20px',
+        }}
+      >
         {/* Minimal Floating Status Pill */}
         <div className="no-print mb-4 px-4 py-1.5 rounded-full bg-[#161B26]/90 border border-white/10 backdrop-blur-md shadow-lg text-[11px] text-neutral-400 flex items-center space-x-2 select-none flex-wrap justify-center flex-shrink-0">
           {isPublicView ? (
