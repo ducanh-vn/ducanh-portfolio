@@ -1,0 +1,801 @@
+{
+  "name": "NGUYỄN ĐỨC ANH",
+  "role": "FRONTEND AND FULLSTACK DEVELOPER",
+  "email": "contact@ducanh.dev",
+  "phone": "+84 988 123 456",
+  "location": "Hanoi, Vietnam",
+  "github": "https://github.com/ducanh-vn",
+  "linkedin": "https://linkedin.com/in/ducanh-vn",
+  "website": "https://ducanh.dev",
+  "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=700&q=80",
+  "showAvatar": true,
+  "summary": "Mình là lập trình viên đam mê phát triển các ứng dụng web hiện đại. Mình tập trung vào việc tạo ra giao diện mượt mà, tối ưu hiệu năng và kiến trúc mã nguồn sạch sẽ, dễ mở rộng. Luôn sẵn sàng đón nhận thử thách mới với các công nghệ mũi nhọn như TypeScript, React và hệ sinh thái Node.js.",
+  "skills": [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Docker"
+  ],
+  "timeline": [
+    {
+      "id": "1",
+      "period": "2024 — HIỆN TẠI",
+      "role": "Fullstack Web Developer",
+      "desc": "Thiết kế & phát triển dự án Nhà Trọ Pro (hệ thống tìm kiếm, quản lý phòng trọ trực tuyến trên TypeScript, React, Tailwind) và ứng dụng trao đổi thời gian thực Chat App."
+    },
+    {
+      "id": "2",
+      "period": "2023 — 2024",
+      "role": "Frontend & Backend Engineering",
+      "desc": "Xây dựng hệ thống Fullstack Blog App (39+ commits với xác thực và RESTful API), các ứng dụng thương mại điện tử và dịch vụ API."
+    }
+  ],
+  "projects": [
+    {
+      "id": "nhatropro",
+      "num": "01",
+      "title": "Nhà Trọ Pro",
+      "category": "Highlight Project",
+      "year": "2024",
+      "desc": "Nền tảng tìm kiếm, quản lý và vận hành phòng trọ thông minh với bộ lọc trực quan, dashboard số liệu và trải nghiệm người dùng tối ưu.",
+      "badges": [
+        "TypeScript",
+        "React",
+        "Tailwind CSS",
+        "Vite",
+        "Vercel"
+      ],
+      "liveDemo": "https://nhatropro-lldr.vercel.app",
+      "github": "https://github.com/ducanh-vn/nhatropro",
+      "features": [
+        {
+          "title": "Bảng điều khiển quản lý phòng trọ",
+          "detail": "Theo dõi số lượng phòng trống, hợp đồng thuê, hóa đơn dịch vụ và chỉ số điện nước theo tháng trực quan."
+        },
+        {
+          "title": "Bộ lọc & Tìm kiếm thông minh",
+          "detail": "Tìm kiếm phòng theo khu vực, mức giá, tiện ích đi kèm với tốc độ phản hồi tức thì."
+        },
+        {
+          "title": "Giao diện Responsive chuẩn chỉnh",
+          "detail": "Tối ưu hóa hiển thị mượt mà trên cả điện thoại di động, máy tính bảng và desktop với Tailwind CSS."
+        },
+        {
+          "title": "Kiến trúc TypeScript vững chắc",
+          "detail": "Mã nguồn chặt chẽ với hệ thống type rõ ràng, giảm thiểu lỗi runtime và dễ dàng mở rộng."
+        }
+      ]
+    },
+    {
+      "id": "chatapp",
+      "num": "02",
+      "title": "Real-time Chat App",
+      "category": "Realtime App",
+      "year": "2024",
+      "desc": "Ứng dụng nhắn tin tức thời với khả năng truyền phát socket trực tiếp, trạng thái online/offline và giao diện trò chuyện hiện đại.",
+      "badges": [
+        "React.js",
+        "Socket.io",
+        "Node.js",
+        "Vercel"
+      ],
+      "liveDemo": "https://chat-app-snowy-sigma.vercel.app",
+      "github": "https://github.com/ducanh-vn/chat-app",
+      "features": [
+        {
+          "title": "Giao tiếp Socket.io thời gian thực",
+          "detail": "Đồng bộ hóa tin nhắn tức thì giữa nhiều người dùng mà không cần reload trang."
+        },
+        {
+          "title": "Trạng thái online / typing",
+          "detail": "Hiển thị người dùng đang online hoặc đang soạn thảo tin nhắn trực tiếp."
+        },
+        {
+          "title": "Giao diện trò chuyện tối giản",
+          "detail": "Bố cục tinh tế, tập trung vào trải nghiệm gõ và đọc tin nhắn nhanh gọn."
+        }
+      ]
+    },
+    {
+      "id": "blog",
+      "num": "03",
+      "title": "Fullstack Blog System",
+      "category": "Fullstack API",
+      "year": "39 Commits",
+      "desc": "Nền tảng blog hoàn chỉnh hỗ trợ tạo bài viết, xác thực người dùng (JWT), phân quyền và kiến trúc RESTful API chuẩn mực.",
+      "badges": [
+        "Node.js",
+        "Express",
+        "JavaScript",
+        "REST API"
+      ],
+      "liveDemo": "https://github.com/ducanh-vn/fullstack_blog_app",
+      "github": "https://github.com/ducanh-vn/fullstack_blog_app",
+      "features": [
+        {
+          "title": "Xác thực & Phân quyền bảo mật",
+          "detail": "Đăng nhập, đăng ký và cấp token JWT cho từng phiên làm việc của tác giả."
+        },
+        {
+          "title": "CRUD bài viết hoàn chỉnh",
+          "detail": "Hỗ trợ soạn thảo, chỉnh sửa, gắn thẻ danh mục và quản lý trạng thái xuất bản."
+        },
+        {
+          "title": "Lịch sử 39+ commits kiên trì",
+          "detail": "Minh chứng cho quá trình phát triển bền bỉ, từng bước hoàn thiện tính năng."
+        }
+      ]
+    },
+    {
+      "id": "vanhoa",
+      "num": "04",
+      "title": "Quản Lý Nhà Văn Hóa",
+      "category": "Management",
+      "year": "2026",
+      "desc": "Ứng dụng quản trị hoạt động, phòng ban, lịch sinh hoạt và cơ sở vật chất dành cho ban quản lý nhà văn hóa cộng đồng.",
+      "badges": [
+        "TypeScript",
+        "React",
+        "Tailwind CSS"
+      ],
+      "liveDemo": "https://github.com/ducanh-vn/quan-ly-nha-van-hoa",
+      "github": "https://github.com/ducanh-vn/quan-ly-nha-van-hoa",
+      "features": [
+        {
+          "title": "Quản lý sự kiện & lịch sinh hoạt",
+          "detail": "Sắp xếp lịch trình các hoạt động cộng đồng, tránh trùng lặp phòng chức năng."
+        },
+        {
+          "title": "Kiểm kê cơ sở vật chất",
+          "detail": "Theo dõi tình trạng bàn ghế, âm thanh, ánh sáng và thiết bị công cộng."
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "id": "edu-1",
+      "school": "Đại học Bách Khoa Hà Nội (HUST)",
+      "degree": "Cử nhân Kỹ thuật Phần mềm / Công nghệ Thông tin",
+      "year": "2020 — 2024",
+      "desc": "Tốt nghiệp loại Giỏi (GPA 3.6/4.0). Tập trung nghiên cứu về kiến trúc ứng dụng web phân tán và tối ưu hiệu năng Frontend."
+    }
+  ],
+  "template": "rabbit",
+  "accentColor": "blue",
+  "fontFamily": "roboto",
+  "lang": "vi",
+  "updatedAt": "2026-11-18T16:34:41.885Z",
+  "cvEn": {
+    "name": "NGUYEN DUC ANH",
+    "role": "Frontend & Fullstack Developer",
+    "email": "contact@ducanh.dev",
+    "phone": "+84 988 123 456",
+    "location": "Hanoi, Vietnam",
+    "github": "https://github.com/ducanh-vn",
+    "linkedin": "https://linkedin.com/in/ducanh-vn",
+    "website": "https://ducanh.dev",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=700&q=80",
+    "showAvatar": true,
+    "summary": "Passionate Software Engineer specialized in developing modern web applications. Dedicated to crafting fluid user interfaces, performance optimization, and clean, scalable architectures with TypeScript, React, and Node.js ecosystems. Ready to tackle demanding engineering challenges.",
+    "skills": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "Tailwind CSS",
+      "Docker",
+      "RESTful API",
+      "Socket.io",
+      "Git / GitHub",
+      "PostgreSQL",
+      "MongoDB",
+      "Redux / Zustand",
+      "CI/CD Basics",
+      "Vite",
+      "Linux"
+    ],
+    "timeline": [
+      {
+        "id": "1",
+        "period": "2024 — PRESENT",
+        "role": "Fullstack Web Developer",
+        "desc": "Architected and engineered Nha Tro Pro (cloud boarding house management platform with TypeScript, React, and Tailwind) and real-time instant messaging Chat App."
+      },
+      {
+        "id": "2",
+        "period": "2023 — 2024",
+        "role": "Frontend & Backend Engineer",
+        "desc": "Developed Fullstack Blog System (39+ commits featuring robust JWT authentication and RESTful APIs), e-commerce applications, and scalable backend microservices."
+      }
+    ],
+    "projects": [
+      {
+        "id": "nhatropro",
+        "num": "01",
+        "title": "Nha Tro Pro",
+        "category": "Highlight Project",
+        "year": "2024",
+        "desc": "Intelligent boarding room management platform featuring intuitive search filters, real-time occupancy monitoring, and optimized UX.",
+        "badges": [
+          "TypeScript",
+          "React",
+          "Tailwind CSS",
+          "Vite",
+          "Vercel"
+        ],
+        "liveDemo": "https://nhatropro-lldr.vercel.app",
+        "github": "https://github.com/ducanh-vn/nhatropro",
+        "features": [
+          {
+            "title": "Dashboard & Room Management",
+            "detail": "Track vacant rooms, tenant contracts, billing statements, and monthly utility readings."
+          },
+          {
+            "title": "Smart Filter & Location Search",
+            "detail": "Instant filtering by geographic area, price range, and amenities with zero latency."
+          },
+          {
+            "title": "Fully Responsive UI",
+            "detail": "Engineered seamless cross-device mobile, tablet, and desktop experiences with Tailwind CSS."
+          },
+          {
+            "title": "Strict TypeScript Architecture",
+            "detail": "Type-safe code structure minimizing runtime errors and enhancing team maintainability."
+          }
+        ]
+      },
+      {
+        "id": "chatapp",
+        "num": "02",
+        "title": "Real-time Chat App",
+        "category": "Realtime App",
+        "year": "2024",
+        "desc": "High-concurrency instant messaging web app with WebSocket streaming, live presence status, and an elegant conversational interface.",
+        "badges": [
+          "React.js",
+          "Socket.io",
+          "Node.js",
+          "Vercel"
+        ],
+        "liveDemo": "https://chat-app-snowy-sigma.vercel.app",
+        "github": "https://github.com/ducanh-vn/chat-app",
+        "features": [
+          {
+            "title": "Real-time Socket.io Sync",
+            "detail": "Instant bi-directional message synchronization across active clients without page reloads."
+          },
+          {
+            "title": "Live Presence & Typing Indicator",
+            "detail": "Shows online/offline status and real-time typing indicators for connected peers."
+          },
+          {
+            "title": "Minimalist Chat Interface",
+            "detail": "Distraction-free messaging layout designed for speed, clarity, and comfort."
+          }
+        ]
+      },
+      {
+        "id": "blog",
+        "num": "03",
+        "title": "Fullstack Blog System",
+        "category": "Fullstack API",
+        "year": "39 Commits",
+        "desc": "End-to-end blogging platform supporting rich article authoring, secure JWT authentication, role-based access control, and clean RESTful API.",
+        "badges": [
+          "Node.js",
+          "Express",
+          "JavaScript",
+          "REST API"
+        ],
+        "liveDemo": "https://github.com/ducanh-vn/fullstack_blog_app",
+        "github": "https://github.com/ducanh-vn/fullstack_blog_app",
+        "features": [
+          {
+            "title": "Secure Auth & RBAC",
+            "detail": "Session tokens and JWT verification for author roles and administrative operations."
+          },
+          {
+            "title": "Complete Article CRUD",
+            "detail": "Authoring, editing, category tagging, and publication lifecycle workflows."
+          },
+          {
+            "title": "39+ Commits Development Log",
+            "detail": "Demonstrates consistent code iteration, test coverage, and modular design."
+          }
+        ]
+      },
+      {
+        "id": "vanhoa",
+        "num": "04",
+        "title": "Community Hall Manager",
+        "category": "Management",
+        "year": "2026",
+        "desc": "Enterprise management portal for community centers, coordinating departmental activities, event schedules, and public equipment inventory.",
+        "badges": [
+          "TypeScript",
+          "React",
+          "Tailwind CSS"
+        ],
+        "liveDemo": "https://github.com/ducanh-vn/quan-ly-nha-van-hoa",
+        "github": "https://github.com/ducanh-vn/quan-ly-nha-van-hoa",
+        "features": [
+          {
+            "title": "Event Scheduling & Hall Booking",
+            "detail": "Conflict-free community scheduling and automated room reservations."
+          },
+          {
+            "title": "Facility & Asset Inventory",
+            "detail": "Auditing and monitoring of AV systems, seating, lighting, and shared facilities."
+          }
+        ]
+      }
+    ],
+    "education": [
+      {
+        "id": "edu-1",
+        "school": "Hanoi University of Science and Technology (HUST)",
+        "degree": "Bachelor of Science in Software Engineering / Information Technology",
+        "year": "2020 — 2024",
+        "desc": "Graduated with High Distinction (GPA 3.6/4.0). Specializing in distributed web architectures and frontend performance engineering."
+      }
+    ],
+    "customLinks": [
+      {
+        "id": "link-gh",
+        "platform": "github",
+        "label": "github.com/ducanh-vn",
+        "url": "https://github.com/ducanh-vn",
+        "enabled": true
+      },
+      {
+        "id": "link-in",
+        "platform": "linkedin",
+        "label": "linkedin.com/in/ducanh-vn",
+        "url": "https://linkedin.com/in/ducanh-vn",
+        "enabled": true
+      },
+      {
+        "id": "link-web",
+        "platform": "website",
+        "label": "ducanh.dev",
+        "url": "https://ducanh.dev",
+        "enabled": true
+      },
+      {
+        "id": "link-lc",
+        "platform": "leetcode",
+        "label": "leetcode.com/ducanh",
+        "url": "https://leetcode.com/ducanh",
+        "enabled": true
+      }
+    ]
+  },
+  "cvVi": {
+    "name": "NGUYỄN ĐỨC ANH",
+    "role": "FRONTEND AND FULLSTACK DEVELOPER",
+    "email": "contact@ducanh.dev",
+    "phone": "+84 988 123 456",
+    "location": "Hanoi, Vietnam",
+    "github": "https://github.com/ducanh-vn",
+    "linkedin": "https://linkedin.com/in/ducanh-vn",
+    "website": "https://ducanh.dev",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=700&q=80",
+    "showAvatar": true,
+    "summary": "Mình là lập trình viên đam mê phát triển các ứng dụng web hiện đại. Mình tập trung vào việc tạo ra giao diện mượt mà, tối ưu hiệu năng và kiến trúc mã nguồn sạch sẽ, dễ mở rộng. Luôn sẵn sàng đón nhận thử thách mới với các công nghệ mũi nhọn như TypeScript, React và hệ sinh thái Node.js.",
+    "skills": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Docker"
+    ],
+    "timeline": [
+      {
+        "id": "1",
+        "period": "2024 — HIỆN TẠI",
+        "role": "Fullstack Web Developer",
+        "desc": "Thiết kế & phát triển dự án Nhà Trọ Pro (hệ thống tìm kiếm, quản lý phòng trọ trực tuyến trên TypeScript, React, Tailwind) và ứng dụng trao đổi thời gian thực Chat App."
+      },
+      {
+        "id": "2",
+        "period": "2023 — 2024",
+        "role": "Frontend & Backend Engineering",
+        "desc": "Xây dựng hệ thống Fullstack Blog App (39+ commits với xác thực và RESTful API), các ứng dụng thương mại điện tử và dịch vụ API."
+      }
+    ],
+    "projects": [
+      {
+        "id": "nhatropro",
+        "num": "01",
+        "title": "Nhà Trọ Pro",
+        "category": "Highlight Project",
+        "year": "2024",
+        "desc": "Nền tảng tìm kiếm, quản lý và vận hành phòng trọ thông minh với bộ lọc trực quan, dashboard số liệu và trải nghiệm người dùng tối ưu.",
+        "badges": [
+          "TypeScript",
+          "React",
+          "Tailwind CSS",
+          "Vite",
+          "Vercel"
+        ],
+        "liveDemo": "https://nhatropro-lldr.vercel.app",
+        "github": "https://github.com/ducanh-vn/nhatropro",
+        "features": [
+          {
+            "title": "Bảng điều khiển quản lý phòng trọ",
+            "detail": "Theo dõi số lượng phòng trống, hợp đồng thuê, hóa đơn dịch vụ và chỉ số điện nước theo tháng trực quan."
+          },
+          {
+            "title": "Bộ lọc & Tìm kiếm thông minh",
+            "detail": "Tìm kiếm phòng theo khu vực, mức giá, tiện ích đi kèm với tốc độ phản hồi tức thì."
+          },
+          {
+            "title": "Giao diện Responsive chuẩn chỉnh",
+            "detail": "Tối ưu hóa hiển thị mượt mà trên cả điện thoại di động, máy tính bảng và desktop với Tailwind CSS."
+          },
+          {
+            "title": "Kiến trúc TypeScript vững chắc",
+            "detail": "Mã nguồn chặt chẽ với hệ thống type rõ ràng, giảm thiểu lỗi runtime và dễ dàng mở rộng."
+          }
+        ]
+      },
+      {
+        "id": "chatapp",
+        "num": "02",
+        "title": "Real-time Chat App",
+        "category": "Realtime App",
+        "year": "2024",
+        "desc": "Ứng dụng nhắn tin tức thời với khả năng truyền phát socket trực tiếp, trạng thái online/offline và giao diện trò chuyện hiện đại.",
+        "badges": [
+          "React.js",
+          "Socket.io",
+          "Node.js",
+          "Vercel"
+        ],
+        "liveDemo": "https://chat-app-snowy-sigma.vercel.app",
+        "github": "https://github.com/ducanh-vn/chat-app",
+        "features": [
+          {
+            "title": "Giao tiếp Socket.io thời gian thực",
+            "detail": "Đồng bộ hóa tin nhắn tức thì giữa nhiều người dùng mà không cần reload trang."
+          },
+          {
+            "title": "Trạng thái online / typing",
+            "detail": "Hiển thị người dùng đang online hoặc đang soạn thảo tin nhắn trực tiếp."
+          },
+          {
+            "title": "Giao diện trò chuyện tối giản",
+            "detail": "Bố cục tinh tế, tập trung vào trải nghiệm gõ và đọc tin nhắn nhanh gọn."
+          }
+        ]
+      },
+      {
+        "id": "blog",
+        "num": "03",
+        "title": "Fullstack Blog System",
+        "category": "Fullstack API",
+        "year": "39 Commits",
+        "desc": "Nền tảng blog hoàn chỉnh hỗ trợ tạo bài viết, xác thực người dùng (JWT), phân quyền và kiến trúc RESTful API chuẩn mực.",
+        "badges": [
+          "Node.js",
+          "Express",
+          "JavaScript",
+          "REST API"
+        ],
+        "liveDemo": "https://github.com/ducanh-vn/fullstack_blog_app",
+        "github": "https://github.com/ducanh-vn/fullstack_blog_app",
+        "features": [
+          {
+            "title": "Xác thực & Phân quyền bảo mật",
+            "detail": "Đăng nhập, đăng ký và cấp token JWT cho từng phiên làm việc của tác giả."
+          },
+          {
+            "title": "CRUD bài viết hoàn chỉnh",
+            "detail": "Hỗ trợ soạn thảo, chỉnh sửa, gắn thẻ danh mục và quản lý trạng thái xuất bản."
+          },
+          {
+            "title": "Lịch sử 39+ commits kiên trì",
+            "detail": "Minh chứng cho quá trình phát triển bền bỉ, từng bước hoàn thiện tính năng."
+          }
+        ]
+      },
+      {
+        "id": "vanhoa",
+        "num": "04",
+        "title": "Quản Lý Nhà Văn Hóa",
+        "category": "Management",
+        "year": "2026",
+        "desc": "Ứng dụng quản trị hoạt động, phòng ban, lịch sinh hoạt và cơ sở vật chất dành cho ban quản lý nhà văn hóa cộng đồng.",
+        "badges": [
+          "TypeScript",
+          "React",
+          "Tailwind CSS"
+        ],
+        "liveDemo": "https://github.com/ducanh-vn/quan-ly-nha-van-hoa",
+        "github": "https://github.com/ducanh-vn/quan-ly-nha-van-hoa",
+        "features": [
+          {
+            "title": "Quản lý sự kiện & lịch sinh hoạt",
+            "detail": "Sắp xếp lịch trình các hoạt động cộng đồng, tránh trùng lặp phòng chức năng."
+          },
+          {
+            "title": "Kiểm kê cơ sở vật chất",
+            "detail": "Theo dõi tình trạng bàn ghế, âm thanh, ánh sáng và thiết bị công cộng."
+          }
+        ]
+      }
+    ],
+    "education": [
+      {
+        "id": "edu-1",
+        "school": "Đại học Bách Khoa Hà Nội (HUST)",
+        "degree": "Cử nhân Kỹ thuật Phần mềm / Công nghệ Thông tin",
+        "year": "2020 — 2024",
+        "desc": "Tốt nghiệp loại Giỏi (GPA 3.6/4.0). Tập trung nghiên cứu về kiến trúc ứng dụng web phân tán và tối ưu hiệu năng Frontend."
+      }
+    ],
+    "template": "rabbit",
+    "accentColor": "blue",
+    "fontFamily": "sans",
+    "lang": "vi",
+    "updatedAt": "2026-11-16T10:46:00.502Z",
+    "cvEn": {
+      "name": "NGUYEN DUC ANH",
+      "role": "Frontend & Fullstack Developer",
+      "email": "contact@ducanh.dev",
+      "phone": "+84 988 123 456",
+      "location": "Hanoi, Vietnam",
+      "github": "https://github.com/ducanh-vn",
+      "linkedin": "https://linkedin.com/in/ducanh-vn",
+      "website": "https://ducanh.dev",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=700&q=80",
+      "showAvatar": true,
+      "summary": "Passionate Software Engineer specialized in developing modern web applications. Dedicated to crafting fluid user interfaces, performance optimization, and clean, scalable architectures with TypeScript, React, and Node.js ecosystems. Ready to tackle demanding engineering challenges.",
+      "skills": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Node.js",
+        "Tailwind CSS",
+        "Docker",
+        "RESTful API",
+        "Socket.io",
+        "Git / GitHub",
+        "PostgreSQL",
+        "MongoDB",
+        "Redux / Zustand",
+        "CI/CD Basics",
+        "Vite",
+        "Linux"
+      ],
+      "timeline": [
+        {
+          "id": "1",
+          "period": "2024 — PRESENT",
+          "role": "Fullstack Web Developer",
+          "desc": "Architected and engineered Nha Tro Pro (cloud boarding house management platform with TypeScript, React, and Tailwind) and real-time instant messaging Chat App."
+        },
+        {
+          "id": "2",
+          "period": "2023 — 2024",
+          "role": "Frontend & Backend Engineer",
+          "desc": "Developed Fullstack Blog System (39+ commits featuring robust JWT authentication and RESTful APIs), e-commerce applications, and scalable backend microservices."
+        }
+      ],
+      "projects": [
+        {
+          "id": "nhatropro",
+          "num": "01",
+          "title": "Nha Tro Pro",
+          "category": "Highlight Project",
+          "year": "2024",
+          "desc": "Intelligent boarding room management platform featuring intuitive search filters, real-time occupancy monitoring, and optimized UX.",
+          "badges": [
+            "TypeScript",
+            "React",
+            "Tailwind CSS",
+            "Vite",
+            "Vercel"
+          ],
+          "liveDemo": "https://nhatropro-lldr.vercel.app",
+          "github": "https://github.com/ducanh-vn/nhatropro",
+          "features": [
+            {
+              "title": "Dashboard & Room Management",
+              "detail": "Track vacant rooms, tenant contracts, billing statements, and monthly utility readings."
+            },
+            {
+              "title": "Smart Filter & Location Search",
+              "detail": "Instant filtering by geographic area, price range, and amenities with zero latency."
+            },
+            {
+              "title": "Fully Responsive UI",
+              "detail": "Engineered seamless cross-device mobile, tablet, and desktop experiences with Tailwind CSS."
+            },
+            {
+              "title": "Strict TypeScript Architecture",
+              "detail": "Type-safe code structure minimizing runtime errors and enhancing team maintainability."
+            }
+          ]
+        },
+        {
+          "id": "chatapp",
+          "num": "02",
+          "title": "Real-time Chat App",
+          "category": "Realtime App",
+          "year": "2024",
+          "desc": "High-concurrency instant messaging web app with WebSocket streaming, live presence status, and an elegant conversational interface.",
+          "badges": [
+            "React.js",
+            "Socket.io",
+            "Node.js",
+            "Vercel"
+          ],
+          "liveDemo": "https://chat-app-snowy-sigma.vercel.app",
+          "github": "https://github.com/ducanh-vn/chat-app",
+          "features": [
+            {
+              "title": "Real-time Socket.io Sync",
+              "detail": "Instant bi-directional message synchronization across active clients without page reloads."
+            },
+            {
+              "title": "Live Presence & Typing Indicator",
+              "detail": "Shows online/offline status and real-time typing indicators for connected peers."
+            },
+            {
+              "title": "Minimalist Chat Interface",
+              "detail": "Distraction-free messaging layout designed for speed, clarity, and comfort."
+            }
+          ]
+        },
+        {
+          "id": "blog",
+          "num": "03",
+          "title": "Fullstack Blog System",
+          "category": "Fullstack API",
+          "year": "39 Commits",
+          "desc": "End-to-end blogging platform supporting rich article authoring, secure JWT authentication, role-based access control, and clean RESTful API.",
+          "badges": [
+            "Node.js",
+            "Express",
+            "JavaScript",
+            "REST API"
+          ],
+          "liveDemo": "https://github.com/ducanh-vn/fullstack_blog_app",
+          "github": "https://github.com/ducanh-vn/fullstack_blog_app",
+          "features": [
+            {
+              "title": "Secure Auth & RBAC",
+              "detail": "Session tokens and JWT verification for author roles and administrative operations."
+            },
+            {
+              "title": "Complete Article CRUD",
+              "detail": "Authoring, editing, category tagging, and publication lifecycle workflows."
+            },
+            {
+              "title": "39+ Commits Development Log",
+              "detail": "Demonstrates consistent code iteration, test coverage, and modular design."
+            }
+          ]
+        },
+        {
+          "id": "vanhoa",
+          "num": "04",
+          "title": "Community Hall Manager",
+          "category": "Management",
+          "year": "2026",
+          "desc": "Enterprise management portal for community centers, coordinating departmental activities, event schedules, and public equipment inventory.",
+          "badges": [
+            "TypeScript",
+            "React",
+            "Tailwind CSS"
+          ],
+          "liveDemo": "https://github.com/ducanh-vn/quan-ly-nha-van-hoa",
+          "github": "https://github.com/ducanh-vn/quan-ly-nha-van-hoa",
+          "features": [
+            {
+              "title": "Event Scheduling & Hall Booking",
+              "detail": "Conflict-free community scheduling and automated room reservations."
+            },
+            {
+              "title": "Facility & Asset Inventory",
+              "detail": "Auditing and monitoring of AV systems, seating, lighting, and shared facilities."
+            }
+          ]
+        }
+      ],
+      "education": [
+        {
+          "id": "edu-1",
+          "school": "Hanoi University of Science and Technology (HUST)",
+          "degree": "Bachelor of Science in Software Engineering / Information Technology",
+          "year": "2020 — 2024",
+          "desc": "Graduated with High Distinction (GPA 3.6/4.0). Specializing in distributed web architectures and frontend performance engineering."
+        }
+      ]
+    },
+    "customLinks": [
+      {
+        "id": "link-gh",
+        "platform": "github",
+        "label": "github.com/ducanh-vn",
+        "url": "https://github.com/ducanh-vn",
+        "enabled": true
+      },
+      {
+        "id": "link-in",
+        "platform": "linkedin",
+        "label": "linkedin.com/in/ducanh-vn",
+        "url": "https://linkedin.com/in/ducanh-vn",
+        "enabled": true
+      },
+      {
+        "id": "link-web",
+        "platform": "website",
+        "label": "ducanh.dev",
+        "url": "https://ducanh.dev",
+        "enabled": true
+      },
+      {
+        "id": "link-lc",
+        "platform": "leetcode",
+        "label": "leetcode.com/ducanh",
+        "url": "https://leetcode.com/ducanh",
+        "enabled": true
+      }
+    ],
+    "qrConfig": {
+      "enabled": false,
+      "targetType": "website",
+      "customUrl": "https://ducanh.dev",
+      "position": "header",
+      "colorMode": "dark",
+      "size": 68,
+      "labelVi": "Quét xem Portfolio",
+      "labelEn": "Scan for Portfolio",
+      "showCaption": true
+    }
+  },
+  "isCompact": false,
+  "customLinks": [
+    {
+      "id": "link-gh",
+      "platform": "github",
+      "label": "github.com/ducanh-vn",
+      "url": "https://github.com/ducanh-vn",
+      "enabled": true
+    },
+    {
+      "id": "link-in",
+      "platform": "linkedin",
+      "label": "linkedin.com/in/ducanh-vn",
+      "url": "https://linkedin.com/in/ducanh-vn",
+      "enabled": true
+    },
+    {
+      "id": "link-web",
+      "platform": "website",
+      "label": "ducanh.dev",
+      "url": "https://ducanh.dev",
+      "enabled": true
+    },
+    {
+      "id": "link-lc",
+      "platform": "leetcode",
+      "label": "leetcode.com/ducanh",
+      "url": "https://leetcode.com/ducanh",
+      "enabled": true
+    }
+  ],
+  "qrConfig": {
+    "enabled": false,
+    "targetType": "website",
+    "customUrl": "https://ducanh.dev",
+    "position": "header",
+    "colorMode": "dark",
+    "size": 68,
+    "labelVi": "Quét xem Portfolio",
+    "labelEn": "Scan for Portfolio",
+    "showCaption": true
+  }
+}

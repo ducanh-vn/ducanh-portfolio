@@ -1,0 +1,193 @@
+{
+  "profile": {
+    "name": "NGUYỄN ĐỨC ANH",
+    "shortName": "Đức Anh",
+    "role": "FRONTEND AND FULLSTACK DEVELOPER",
+    "tagline": "Crafting clean code & intuitive digital experiences",
+    "status": "Available for hire",
+    "bio": "Mình là lập trình viên đam mê phát triển các ứng dụng web hiện đại. Mình tập trung vào việc tạo ra giao diện mượt mà, tối ưu hiệu năng và kiến trúc mã nguồn sạch sẽ, dễ mở rộng. Luôn sẵn sàng đón nhận thử thách mới với các công nghệ mũi nhọn như TypeScript, React và hệ sinh thái Node.js.",
+    "email": "contact@ducanh.dev",
+    "location": "Hanoi, Vietnam",
+    "github": "https://github.com/ducanh-vn",
+    "linkedin": "https://linkedin.com/in/ducanh-vn",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=700&q=80",
+    "cvUrl": "/cv"
+  },
+  "skills": [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Docker"
+  ],
+  "timeline": [
+    {
+      "id": "1",
+      "period": "2024 — HIỆN TẠI",
+      "role": "Fullstack Web Developer",
+      "desc": "Thiết kế & phát triển dự án Nhà Trọ Pro (hệ thống tìm kiếm, quản lý phòng trọ trực tuyến trên TypeScript, React, Tailwind) và ứng dụng trao đổi thời gian thực Chat App."
+    },
+    {
+      "id": "2",
+      "period": "2023 — 2024",
+      "role": "Frontend & Backend Engineering",
+      "desc": "Xây dựng hệ thống Fullstack Blog App (39+ commits với xác thực và RESTful API), các ứng dụng thương mại điện tử và dịch vụ API."
+    }
+  ],
+  "projects": [
+    {
+      "id": "cvstudio",
+      "num": "01",
+      "title": "CV Studio — AI Resume & Career Platform",
+      "category": "Highlight Project",
+      "year": "2024",
+      "desc": "Nền tảng tạo CV và hồ sơ sự nghiệp chuyên nghiệp với 14 mẫu giao diện chuẩn ATS, bộ chuẩn hóa danh pháp công nghệ Tech Linter, JD Matcher và chia sẻ trực tuyến.",
+      "badges": [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "SaaS",
+        "AI ATS"
+      ],
+      "liveDemo": "/cv",
+      "github": "https://github.com/ducanh-vn/cv-studio",
+      "features": [
+        {
+          "title": "14 Mẫu CV Chuẩn ATS & Đa Dạng Phong Cách",
+          "detail": "Thiết kế chuẩn hóa cho lập trình viên, tech lead và chuyên gia IT, tối ưu điểm vượt qua bộ lọc ATS."
+        },
+        {
+          "title": "Bộ Chuẩn Hóa Danh Pháp Công Nghệ Tự Động (Tech Linter)",
+          "detail": "Tự động phát hiện và chuẩn hóa chính xác 120+ tên công nghệ theo chuẩn quốc tế với 1 cú click."
+        },
+        {
+          "title": "Phân Tích Độ Khớp JD & Gợi Ý Từ Khóa (JD Matcher)",
+          "detail": "So khớp mô tả công việc (JD) với hồ sơ, chấm điểm % ATS và gợi ý thêm từ khóa kỹ năng tức thì."
+        },
+        {
+          "title": "Mã QR Động & Xuất Bản Đa Định Dạng",
+          "detail": "Tạo mã QR cá nhân dẫn tới LinkedIn/Portfolio, xuất file PDF in ấn chuẩn A4 và ảnh siêu nét 3x Retina."
+        }
+      ]
+    },
+    {
+      "id": "nhatropro",
+      "num": "02",
+      "title": "Nhà Trọ Pro",
+      "category": "Featured Project",
+      "year": "2024",
+      "desc": "Nền tảng tìm kiếm, quản lý và vận hành phòng trọ thông minh với bộ lọc trực quan, dashboard số liệu và trải nghiệm người dùng tối ưu.",
+      "badges": [
+        "TypeScript",
+        "React",
+        "Tailwind CSS",
+        "Vite",
+        "Vercel"
+      ],
+      "liveDemo": "https://nhatropro-lldr.vercel.app",
+      "github": "https://github.com/ducanh-vn/nhatropro",
+      "features": [
+        {
+          "title": "Bảng điều khiển quản lý phòng trọ",
+          "detail": "Theo dõi số lượng phòng trống, hợp đồng thuê, hóa đơn dịch vụ và chỉ số điện nước theo tháng trực quan."
+        },
+        {
+          "title": "Bộ lọc & Tìm kiếm thông minh",
+          "detail": "Tìm kiếm phòng theo khu vực, mức giá, tiện ích đi kèm với tốc độ phản hồi tức thì."
+        },
+        {
+          "title": "Giao diện Responsive chuẩn chỉnh",
+          "detail": "Tối ưu hóa hiển thị mượt mà trên cả điện thoại di động, máy tính bảng và desktop với Tailwind CSS."
+        },
+        {
+          "title": "Kiến trúc TypeScript vững chắc",
+          "detail": "Mã nguồn chặt chẽ với hệ thống type rõ ràng, giảm thiểu lỗi runtime và dễ dàng mở rộng."
+        }
+      ]
+    },
+    {
+      "id": "chatapp",
+      "num": "02",
+      "title": "Real-time Chat App",
+      "category": "Realtime App",
+      "year": "2024",
+      "desc": "Ứng dụng nhắn tin tức thời với khả năng truyền phát socket trực tiếp, trạng thái online/offline và giao diện trò chuyện hiện đại.",
+      "badges": [
+        "React.js",
+        "Socket.io",
+        "Node.js",
+        "Vercel"
+      ],
+      "liveDemo": "https://chat-app-snowy-sigma.vercel.app",
+      "github": "https://github.com/ducanh-vn/chat-app",
+      "features": [
+        {
+          "title": "Giao tiếp Socket.io thời gian thực",
+          "detail": "Đồng bộ hóa tin nhắn tức thì giữa nhiều người dùng mà không cần reload trang."
+        },
+        {
+          "title": "Trạng thái online / typing",
+          "detail": "Hiển thị người dùng đang online hoặc đang soạn thảo tin nhắn trực tiếp."
+        },
+        {
+          "title": "Giao diện trò chuyện tối giản",
+          "detail": "Bố cục tinh tế, tập trung vào trải nghiệm gõ và đọc tin nhắn nhanh gọn."
+        }
+      ]
+    },
+    {
+      "id": "blog",
+      "num": "03",
+      "title": "Fullstack Blog System",
+      "category": "Fullstack API",
+      "year": "39 Commits",
+      "desc": "Nền tảng blog hoàn chỉnh hỗ trợ tạo bài viết, xác thực người dùng (JWT), phân quyền và kiến trúc RESTful API chuẩn mực.",
+      "badges": [
+        "Node.js",
+        "Express",
+        "JavaScript",
+        "REST API"
+      ],
+      "liveDemo": "https://github.com/ducanh-vn/fullstack_blog_app",
+      "github": "https://github.com/ducanh-vn/fullstack_blog_app",
+      "features": [
+        {
+          "title": "Xác thực & Phân quyền bảo mật",
+          "detail": "Đăng nhập, đăng ký và cấp token JWT cho từng phiên làm việc của tác giả."
+        },
+        {
+          "title": "CRUD bài viết hoàn chỉnh",
+          "detail": "Hỗ trợ soạn thảo, chỉnh sửa, gắn thẻ danh mục và quản lý trạng thái xuất bản."
+        },
+        {
+          "title": "Lịch sử 39+ commits kiên trì",
+          "detail": "Minh chứng cho quá trình phát triển bền bỉ, từng bước hoàn thiện tính năng."
+        }
+      ]
+    },
+    {
+      "id": "vanhoa",
+      "num": "04",
+      "title": "Quản Lý Nhà Văn Hóa",
+      "category": "Management",
+      "year": "2026",
+      "desc": "Ứng dụng quản trị hoạt động, phòng ban, lịch sinh hoạt và cơ sở vật chất dành cho ban quản lý nhà văn hóa cộng đồng.",
+      "badges": [
+        "TypeScript",
+        "React",
+        "Tailwind CSS"
+      ],
+      "liveDemo": "https://github.com/ducanh-vn/quan-ly-nha-van-hoa",
+      "github": "https://github.com/ducanh-vn/quan-ly-nha-van-hoa",
+      "features": [
+        {
+          "title": "Quản lý sự kiện & lịch sinh hoạt",
+          "detail": "Sắp xếp lịch trình các hoạt động cộng đồng, tránh trùng lặp phòng chức năng."
+        },
+        {
+          "title": "Kiểm kê cơ sở vật chất",
+          "detail": "Theo dõi tình trạng bàn ghế, âm thanh, ánh sáng và thiết bị công cộng."
+        }
+      ]
+    }
+  ]
+}
