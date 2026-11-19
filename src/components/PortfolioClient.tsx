@@ -205,7 +205,7 @@ export default function PortfolioClient({ initialData }: PortfolioClientProps) {
                 {/* Download CV & Contact CTA */}
                 <div className="w-full max-w-[340px] flex flex-col space-y-3">
                   <a
-                    href={profile.cvUrl || '/cv'}
+                    href={profile.cvUrl || 'http://localhost:3001'}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-3.5 bg-white text-black hover:bg-[#f1f505] transition-all font-semibold text-xs uppercase tracking-[0.2em] text-center rounded-xl flex items-center justify-center space-x-2 shadow-xl"
