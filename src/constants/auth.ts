@@ -6,7 +6,12 @@ export const PENDING_2FA_VALUE = 'pending';
 export const SESSION_MAX_AGE = 60 * 60 * 24 * 7; // 7 days
 export const PENDING_2FA_MAX_AGE = 60 * 5; // 5 minutes
 
-export const DEFAULT_ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'ducanh2026';
+/**
+ * Admin password when src/data/auth.json is absent (it is not committed).
+ * Production must set ADMIN_PASSWORD; the dev fallback only applies locally.
+ */
+export const DEFAULT_ADMIN_PASSWORD =
+  process.env.ADMIN_PASSWORD || (process.env.NODE_ENV === 'production' ? '' : 'ducanh2026');
 
 export const TOTP_ISSUER = 'Nguyen Duc Anh Portfolio';
 export const TOTP_LABEL = 'admin@ducanh.dev';

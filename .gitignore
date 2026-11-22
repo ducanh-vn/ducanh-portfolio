@@ -31,3 +31,6 @@ next-env.d.ts
 
 # local avatar uploads (production uses Vercel Blob)
 /public/uploads
+
+# admin credentials and 2FA secret (set ADMIN_PASSWORD on the host instead)
+/src/data/auth.json

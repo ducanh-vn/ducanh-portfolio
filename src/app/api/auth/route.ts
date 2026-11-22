@@ -138,7 +138,8 @@ export async function POST(request: Request) {
     // 7. LOGIN STEP 1 (Password verification)
     const validPassword = getAdminPassword();
 
-    if (password !== validPassword) {
+    // An empty configured password (ADMIN_PASSWORD unset in production) never matches
+    if (!validPassword || password !== validPassword) {
       return NextResponse.json({ success: false, error: 'Mật khẩu không chính xác' }, { status: 401 });
     }
 
