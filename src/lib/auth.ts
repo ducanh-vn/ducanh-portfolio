@@ -2,19 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import { generateSecret, generateURI, verifySync } from 'otplib';
 import QRCode from 'qrcode';
+import type { AuthData, TwoFactorSetup } from '@/types/auth';
+import { DEFAULT_ADMIN_PASSWORD, QR_CODE_OPTIONS, TOTP_ISSUER, TOTP_LABEL } from '@/constants/auth';
 
 const authFilePath = path.join(process.cwd(), 'src', 'data', 'auth.json');
-const DEFAULT_PASS = process.env.ADMIN_PASSWORD || 'ducanh2026';
-
-export interface AuthData {
-  password: string;
-  updatedAt: string;
-  twoFactor?: {
-    enabled: boolean;
-    secret?: string;
-    tempSecret?: string;
-  };
-}
+const DEFAULT_PASS = DEFAULT_ADMIN_PASSWORD;
 
 export function getAuthData(): AuthData {
   try {
@@ -73,23 +65,16 @@ export function get2FAStatus(): { enabled: boolean } {
   return { enabled: Boolean(data.twoFactor?.enabled && data.twoFactor?.secret) };
 }
 
-export async function generate2FASetup(): Promise<{ secret: string; qrCodeUrl: string; uri: string }> {
+export async function generate2FASetup(): Promise<TwoFactorSetup> {
   const data = getAuthData();
   const secret = generateSecret();
   const uri = generateURI({
-    issuer: 'Nguyen Duc Anh Portfolio',
-    label: 'admin@ducanh.dev',
+    issuer: TOTP_ISSUER,
+    label: TOTP_LABEL,
     secret: secret,
   });
 
-  const qrCodeUrl = await QRCode.toDataURL(uri, {
-    margin: 2,
-    width: 256,
-    color: {
-      dark: '#000000',
-      light: '#ffffff',
-    },
-  });
+  const qrCodeUrl = await QRCode.toDataURL(uri, QR_CODE_OPTIONS);
 
   // Save tempSecret to verify before permanently enabling
   if (!data.twoFactor) {

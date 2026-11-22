@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -16,11 +16,15 @@
   --font-cursive: 'Caveat', cursive;
 }
 
+html {
+  /* Safety net: never allow sideways scrolling on any viewport */
+  overflow-x: clip;
+}
+
 body {
   background-color: var(--bg-dark);
   color: var(--text-main);
   font-family: var(--font-sans);
-  overflow-x: hidden;
   position: relative;
   min-height: 100vh;
 }
@@ -28,10 +32,7 @@ body {
 /* Subtle Film Grain Noise Overlay */
 .noise-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   pointer-events: none;
   z-index: 9990;
   opacity: 0.04;
@@ -73,10 +74,20 @@ body {
 }
 
 /* Global Custom Cursor System across ALL pages */
+/* Only hide the native cursor once CustomCursor has mounted (html.has-custom-cursor).
+   Text fields keep the native I-beam. */
 @media (pointer: fine) {
-  *, *::before, *::after, html, body, a, button, input, textarea, select, [role="button"] {
+  html.has-custom-cursor,
+  html.has-custom-cursor *:not(input):not(textarea):not([contenteditable="true"]) {
     cursor: none !important;
   }
+}
+
+/* Shared keyboard focus ring */
+:focus-visible {
+  outline: 2px solid var(--accent-yellow);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 /* Preloader */
@@ -148,9 +159,9 @@ body {
 /* Editorial Typography */
 .editorial-hero-text {
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 7vw, 6.8rem);
+  font-size: clamp(2.1rem, 8.5vw, 6.2rem);
   line-height: 1.05;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   font-weight: 400;
   text-align: center;
@@ -158,10 +169,23 @@ body {
 
 .editorial-hero-text span {
   display: block;
+  overflow-wrap: anywhere;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s ease;
 }
 
-.editorial-hero-text:hover .glow-text {
+/* Desktop: keep the intended 3 lines, sized so the longest line fits the container */
+@media (min-width: 1024px) {
+  .editorial-hero-text {
+    font-size: clamp(3rem, 7vw, 5.2rem);
+    letter-spacing: 0.07em;
+  }
+  .editorial-hero-text span {
+    white-space: nowrap;
+  }
+}
+
+.editorial-hero-text:hover .glow-text,
+[role="button"]:focus-visible .editorial-hero-text .glow-text {
   color: var(--accent-yellow);
   text-shadow: 0 0 25px var(--accent-glow);
   transform: scale(1.03);
@@ -176,14 +200,18 @@ body {
   display: flex;
   flex-direction: column;
   transform: translateY(100%);
+  /* Idle: fully hidden so the stripe glow never leaks into the viewport */
+  visibility: hidden;
 }
 
 .page-transition-curtain.is-entering {
+  visibility: visible;
   pointer-events: auto;
   animation: curtainSweepIn 0.48s cubic-bezier(0.77, 0, 0.175, 1) forwards;
 }
 
 .page-transition-curtain.is-leaving {
+  visibility: visible;
   pointer-events: auto;
   animation: curtainSweepOut 0.48s cubic-bezier(0.77, 0, 0.175, 1) forwards;
 }
@@ -259,21 +287,32 @@ body {
 #projectDrawer {
   position: fixed;
   top: 0;
-  right: -100%;
+  right: 0;
   width: 100%;
   max-width: 620px;
   height: 100vh;
+  height: 100dvh;
+  transform: translateX(100%);
+  visibility: hidden;
   background: rgba(22, 22, 22, 0.95);
   backdrop-filter: blur(20px);
   border-left: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 9900;
-  transition: right 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
   overflow-y: auto;
-  padding: 40px 30px;
+  overscroll-behavior: contain;
+  padding: 24px 20px;
+}
+
+@media (min-width: 640px) {
+  #projectDrawer {
+    padding: 40px 30px;
+  }
 }
 
 #projectDrawer.open {
-  right: 0;
+  transform: translateX(0);
+  visibility: visible;
 }
 
 #drawerOverlay {
@@ -329,6 +368,15 @@ body {
   visibility: visible;
 }
 
+#projectModal .modal-content-box {
+  transform: translateY(16px) scale(0.98);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#projectModal.open .modal-content-box {
+  transform: none;
+}
+
 .modal-content-box {
   background: #181818;
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -336,7 +384,9 @@ body {
   max-width: 900px;
   width: 100%;
   max-height: 90vh;
+  max-height: 90dvh;
   overflow-y: auto;
+  overscroll-behavior: contain;
   position: relative;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
 }
@@ -344,8 +394,14 @@ body {
 .paper-section {
   background: #f4f4f4;
   color: #1a1a1a;
-  padding: 40px;
+  padding: 20px;
   border-radius: 0 0 16px 16px;
+}
+
+@media (min-width: 768px) {
+  .paper-section {
+    padding: 40px;
+  }
 }
 
 /* Custom Scrollbar */
@@ -394,4 +450,23 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Respect users who ask for less motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .logo-ring {
+    animation: none !important;
+  }
+}
+
+/* Project card keyboard focus (the card's inner title button carries focus) */
+.project-card:focus-within {
+  border-color: rgba(241, 245, 5, 0.6);
+  box-shadow: 0 0 0 2px rgba(241, 245, 5, 0.6);
 }

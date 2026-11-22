@@ -106,7 +106,7 @@
     },
     {
       "id": "chatapp",
-      "num": "02",
+      "num": "03",
       "title": "Real-time Chat App",
       "category": "Realtime App",
       "year": "2024",
@@ -136,7 +136,7 @@
     },
     {
       "id": "blog",
-      "num": "03",
+      "num": "04",
       "title": "Fullstack Blog System",
       "category": "Fullstack API",
       "year": "39 Commits",
@@ -166,7 +166,7 @@
     },
     {
       "id": "vanhoa",
-      "num": "04",
+      "num": "05",
       "title": "Quản Lý Nhà Văn Hóa",
       "category": "Management",
       "year": "2026",

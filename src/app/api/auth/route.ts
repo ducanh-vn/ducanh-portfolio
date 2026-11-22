@@ -9,11 +9,18 @@ import {
   disable2FA,
   verify2FAToken,
 } from '@/lib/auth';
+import { hasAdminSession, pending2FACookieOptions, sessionCookieOptions } from '@/lib/session';
+import {
+  MIN_PASSWORD_LENGTH,
+  PENDING_2FA_COOKIE,
+  PENDING_2FA_VALUE,
+  SESSION_COOKIE,
+  SESSION_VALUE,
+  TOTP_CODE_LENGTH,
+} from '@/constants/auth';
 
 export async function GET() {
-  const cookieStore = cookies();
-  const session = cookieStore.get('admin_session');
-  const isAuthenticated = session?.value === 'authenticated';
+  const isAuthenticated = hasAdminSession();
   const { enabled: twoFactorEnabled } = get2FAStatus();
 
   return NextResponse.json({
@@ -31,15 +38,14 @@ export async function POST(request: Request) {
 
     // 1. LOGOUT
     if (action === 'logout') {
-      cookieStore.delete('admin_session');
-      cookieStore.delete('admin_2fa_pending');
+      cookieStore.delete(SESSION_COOKIE);
+      cookieStore.delete(PENDING_2FA_COOKIE);
       return NextResponse.json({ success: true, message: 'Logged out' });
     }
 
     // 2. CHANGE PASSWORD
     if (action === 'change_password') {
-      const authSession = cookieStore.get('admin_session');
-      if (!authSession || authSession.value !== 'authenticated') {
+      if (!hasAdminSession()) {
         return NextResponse.json({ success: false, error: 'Phiên làm việc không hợp lệ' }, { status: 401 });
       }
 
@@ -48,7 +54,7 @@ export async function POST(request: Request) {
         return NextResponse.json({ success: false, error: 'Mật khẩu hiện tại không chính xác' }, { status: 400 });
       }
 
-      if (!newPassword || newPassword.trim().length < 6) {
+      if (!newPassword || newPassword.trim().length < MIN_PASSWORD_LENGTH) {
         return NextResponse.json({ success: false, error: 'Mật khẩu mới phải có ít nhất 6 ký tự' }, { status: 400 });
       }
 
@@ -62,8 +68,7 @@ export async function POST(request: Request) {
 
     // 3. 2FA SETUP (Generate QR Code & Secret)
     if (action === 'setup_2fa') {
-      const authSession = cookieStore.get('admin_session');
-      if (!authSession || authSession.value !== 'authenticated') {
+      if (!hasAdminSession()) {
         return NextResponse.json({ success: false, error: 'Vui lòng đăng nhập lại' }, { status: 401 });
       }
 
@@ -73,12 +78,11 @@ export async function POST(request: Request) {
 
     // 4. VERIFY & ENABLE 2FA
     if (action === 'verify_enable_2fa') {
-      const authSession = cookieStore.get('admin_session');
-      if (!authSession || authSession.value !== 'authenticated') {
+      if (!hasAdminSession()) {
         return NextResponse.json({ success: false, error: 'Vui lòng đăng nhập lại' }, { status: 401 });
       }
 
-      if (!code || code.trim().length !== 6) {
+      if (!code || code.trim().length !== TOTP_CODE_LENGTH) {
         return NextResponse.json({ success: false, error: 'Mã xác thực phải gồm 6 chữ số' }, { status: 400 });
       }
 
@@ -92,8 +96,7 @@ export async function POST(request: Request) {
 
     // 5. DISABLE 2FA
     if (action === 'disable_2fa') {
-      const authSession = cookieStore.get('admin_session');
-      if (!authSession || authSession.value !== 'authenticated') {
+      if (!hasAdminSession()) {
         return NextResponse.json({ success: false, error: 'Vui lòng đăng nhập lại' }, { status: 401 });
       }
 
@@ -111,12 +114,12 @@ export async function POST(request: Request) {
 
     // 6. LOGIN STEP 2: VERIFY 2FA CODE
     if (action === 'verify_2fa_login') {
-      const pendingCookie = cookieStore.get('admin_2fa_pending');
-      if (!pendingCookie || pendingCookie.value !== 'pending') {
+      const pendingCookie = cookieStore.get(PENDING_2FA_COOKIE);
+      if (!pendingCookie || pendingCookie.value !== PENDING_2FA_VALUE) {
         return NextResponse.json({ success: false, error: 'Phiên đăng nhập đã hết hạn. Vui lòng nhập lại mật khẩu.' }, { status: 401 });
       }
 
-      if (!code || code.trim().length !== 6) {
+      if (!code || code.trim().length !== TOTP_CODE_LENGTH) {
         return NextResponse.json({ success: false, error: 'Mã xác thực gồm 6 chữ số' }, { status: 400 });
       }
 
@@ -126,14 +129,8 @@ export async function POST(request: Request) {
       }
 
       // Valid 2FA! Establish authenticated admin session
-      cookieStore.delete('admin_2fa_pending');
-      cookieStore.set('admin_session', 'authenticated', {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
-        path: '/',
-        maxAge: 60 * 60 * 24 * 7, // 7 days
-      });
+      cookieStore.delete(PENDING_2FA_COOKIE);
+      cookieStore.set(SESSION_COOKIE, SESSION_VALUE, sessionCookieOptions());
 
       return NextResponse.json({ success: true, message: 'Xác thực thành công' });
     }
@@ -149,13 +146,7 @@ export async function POST(request: Request) {
 
     if (is2FAEnabled) {
       // 2FA required: set pending cookie for 5 minutes
-      cookieStore.set('admin_2fa_pending', 'pending', {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
-        path: '/',
-        maxAge: 60 * 5, // 5 minutes
-      });
+      cookieStore.set(PENDING_2FA_COOKIE, PENDING_2FA_VALUE, pending2FACookieOptions());
 
       return NextResponse.json({
         success: true,
@@ -165,13 +156,7 @@ export async function POST(request: Request) {
     }
 
     // 2FA not enabled: direct login
-    cookieStore.set('admin_session', 'authenticated', {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      path: '/',
-      maxAge: 60 * 60 * 24 * 7, // 7 days
-    });
+    cookieStore.set(SESSION_COOKIE, SESSION_VALUE, sessionCookieOptions());
 
     return NextResponse.json({ success: true, require2FA: false, message: 'Đăng nhập thành công' });
   } catch (error) {

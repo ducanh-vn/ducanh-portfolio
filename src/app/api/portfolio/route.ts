@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getPortfolioData, savePortfolioData } from '@/lib/data';
-import { cookies } from 'next/headers';
+import { hasAdminSession } from '@/lib/session';
 
 export async function GET() {
   try {
@@ -14,10 +14,7 @@ export async function GET() {
 export async function PUT(request: Request) {
   try {
     // Check admin session cookie
-    const cookieStore = cookies();
-    const authSession = cookieStore.get('admin_session');
-
-    if (!authSession || authSession.value !== 'authenticated') {
+    if (!hasAdminSession()) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
