@@ -17,3 +17,6 @@ export const ALLOWED_IMAGE_TYPES: Record<string, string> = {
 
 /** Route that streams private Blob files (avatars) to the browser. */
 export const MEDIA_ROUTE = '/api/media';
+
+/** Blob pathname for admin credentials and the 2FA secret (private store only). */
+export const AUTH_BLOB_PATH = 'private/auth.json';

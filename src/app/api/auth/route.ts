@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import {
-  getAdminPassword,
+  verifyAdminPassword,
   setAdminPassword,
   get2FAStatus,
   generate2FASetup,
@@ -21,7 +21,7 @@ import {
 
 export async function GET() {
   const isAuthenticated = hasAdminSession();
-  const { enabled: twoFactorEnabled } = get2FAStatus();
+  const { enabled: twoFactorEnabled } = await get2FAStatus();
 
   return NextResponse.json({
     authenticated: isAuthenticated,
@@ -49,8 +49,7 @@ export async function POST(request: Request) {
         return NextResponse.json({ success: false, error: 'Phiên làm việc không hợp lệ' }, { status: 401 });
       }
 
-      const currentPass = getAdminPassword();
-      if (!oldPassword || oldPassword !== currentPass) {
+      if (!oldPassword || !(await verifyAdminPassword(oldPassword))) {
         return NextResponse.json({ success: false, error: 'Mật khẩu hiện tại không chính xác' }, { status: 400 });
       }
 
@@ -58,7 +57,7 @@ export async function POST(request: Request) {
         return NextResponse.json({ success: false, error: 'Mật khẩu mới phải có ít nhất 6 ký tự' }, { status: 400 });
       }
 
-      const success = setAdminPassword(newPassword.trim());
+      const success = await setAdminPassword(newPassword.trim());
       if (success) {
         return NextResponse.json({ success: true, message: 'Đổi mật khẩu thành công!' });
       } else {
@@ -86,7 +85,7 @@ export async function POST(request: Request) {
         return NextResponse.json({ success: false, error: 'Mã xác thực phải gồm 6 chữ số' }, { status: 400 });
       }
 
-      const enabled = verifyAndEnable2FA(code.trim());
+      const enabled = await verifyAndEnable2FA(code.trim());
       if (enabled) {
         return NextResponse.json({ success: true, message: 'Kích hoạt xác thực 2 lớp thành công!' });
       } else {
@@ -104,7 +103,7 @@ export async function POST(request: Request) {
         return NextResponse.json({ success: false, error: 'Vui lòng nhập mật khẩu hiện tại' }, { status: 400 });
       }
 
-      const result = disable2FA(password);
+      const result = await disable2FA(password);
       if (result.success) {
         return NextResponse.json({ success: true, message: 'Đã tắt xác thực 2 lớp thành công' });
       } else {
@@ -123,7 +122,7 @@ export async function POST(request: Request) {
         return NextResponse.json({ success: false, error: 'Mã xác thực gồm 6 chữ số' }, { status: 400 });
       }
 
-      const isValid = verify2FAToken(code.trim());
+      const isValid = await verify2FAToken(code.trim());
       if (!isValid) {
         return NextResponse.json({ success: false, error: 'Mã xác thực 2FA không chính xác hoặc đã hết hạn.' }, { status: 400 });
       }
@@ -136,14 +135,12 @@ export async function POST(request: Request) {
     }
 
     // 7. LOGIN STEP 1 (Password verification)
-    const validPassword = getAdminPassword();
-
     // An empty configured password (ADMIN_PASSWORD unset in production) never matches
-    if (!validPassword || password !== validPassword) {
+    if (!(await verifyAdminPassword(password))) {
       return NextResponse.json({ success: false, error: 'Mật khẩu không chính xác' }, { status: 401 });
     }
 
-    const { enabled: is2FAEnabled } = get2FAStatus();
+    const { enabled: is2FAEnabled } = await get2FAStatus();
 
     if (is2FAEnabled) {
       // 2FA required: set pending cookie for 5 minutes

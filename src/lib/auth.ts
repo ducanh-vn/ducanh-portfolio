@@ -4,69 +4,77 @@ import { generateSecret, generateURI, verifySync } from 'otplib';
 import QRCode from 'qrcode';
 import type { AuthData, TwoFactorSetup } from '@/types/auth';
 import { DEFAULT_ADMIN_PASSWORD, QR_CODE_OPTIONS, TOTP_ISSUER, TOTP_LABEL } from '@/constants/auth';
+import { AUTH_BLOB_PATH } from '@/constants/storage';
+import { hasBlobStore, readJsonBlob, writeJsonBlob } from '@/lib/storage';
+import { hashPassword, verifyPassword } from '@/lib/password';
 
+/**
+ * Admin credentials live in the private Blob store on Vercel and in src/data/auth.json
+ * locally (that file is git-ignored). Until a password is changed from the admin UI,
+ * the password comes from the ADMIN_PASSWORD environment variable.
+ */
 const authFilePath = path.join(process.cwd(), 'src', 'data', 'auth.json');
-const DEFAULT_PASS = DEFAULT_ADMIN_PASSWORD;
 
-export function getAuthData(): AuthData {
-  try {
-    if (fs.existsSync(authFilePath)) {
-      const fileData = fs.readFileSync(authFilePath, 'utf8');
-      const json = JSON.parse(fileData);
-      return {
-        password: json.password || DEFAULT_PASS,
-        updatedAt: json.updatedAt || new Date().toISOString(),
-        twoFactor: {
-          enabled: Boolean(json.twoFactor?.enabled),
-          secret: json.twoFactor?.secret || '',
-          tempSecret: json.twoFactor?.tempSecret || '',
-        },
-      };
-    }
-  } catch (error) {
-    console.error('Error reading auth file:', error);
-  }
-
+function normalize(json: Partial<AuthData> | null): AuthData {
   return {
-    password: DEFAULT_PASS,
-    updatedAt: new Date().toISOString(),
+    password: json?.password || DEFAULT_ADMIN_PASSWORD,
+    updatedAt: json?.updatedAt || new Date().toISOString(),
     twoFactor: {
-      enabled: false,
-      secret: '',
-      tempSecret: '',
+      enabled: Boolean(json?.twoFactor?.enabled),
+      secret: json?.twoFactor?.secret || '',
+      tempSecret: json?.twoFactor?.tempSecret || '',
     },
   };
 }
 
-export function saveAuthData(data: AuthData): boolean {
+export async function getAuthData(): Promise<AuthData> {
   try {
-    fs.writeFileSync(authFilePath, JSON.stringify(data, null, 2), 'utf8');
+    if (hasBlobStore()) {
+      return normalize(await readJsonBlob<AuthData>(AUTH_BLOB_PATH));
+    }
+    if (fs.existsSync(authFilePath)) {
+      return normalize(JSON.parse(fs.readFileSync(authFilePath, 'utf8')));
+    }
+  } catch (error) {
+    console.error('Error reading auth data:', error);
+  }
+  return normalize(null);
+}
+
+export async function saveAuthData(data: AuthData): Promise<boolean> {
+  try {
+    if (hasBlobStore()) {
+      await writeJsonBlob(AUTH_BLOB_PATH, data);
+    } else {
+      fs.writeFileSync(authFilePath, JSON.stringify(data, null, 2), 'utf8');
+    }
     return true;
   } catch (error) {
-    console.error('Error saving auth file:', error);
+    console.error('Error saving auth data:', error);
     return false;
   }
 }
 
-export function getAdminPassword(): string {
-  const data = getAuthData();
-  return data.password;
+/** True when `candidate` matches the current admin password (hashed or legacy plain text). */
+export async function verifyAdminPassword(candidate: string): Promise<boolean> {
+  const data = await getAuthData();
+  return verifyPassword(candidate, data.password);
 }
 
-export function setAdminPassword(newPassword: string): boolean {
-  const data = getAuthData();
-  data.password = newPassword;
+export async function setAdminPassword(newPassword: string): Promise<boolean> {
+  const data = await getAuthData();
+  data.password = hashPassword(newPassword);
   data.updatedAt = new Date().toISOString();
   return saveAuthData(data);
 }
 
-export function get2FAStatus(): { enabled: boolean } {
-  const data = getAuthData();
+export async function get2FAStatus(): Promise<{ enabled: boolean }> {
+  const data = await getAuthData();
   return { enabled: Boolean(data.twoFactor?.enabled && data.twoFactor?.secret) };
 }
 
 export async function generate2FASetup(): Promise<TwoFactorSetup> {
-  const data = getAuthData();
+  const data = await getAuthData();
   const secret = generateSecret();
   const uri = generateURI({
     issuer: TOTP_ISSUER,
@@ -81,13 +89,15 @@ export async function generate2FASetup(): Promise<TwoFactorSetup> {
     data.twoFactor = { enabled: false };
   }
   data.twoFactor.tempSecret = secret;
-  saveAuthData(data);
+  if (!(await saveAuthData(data))) {
+    throw new Error('Failed to store 2FA setup');
+  }
 
   return { secret, qrCodeUrl, uri };
 }
 
-export function verifyAndEnable2FA(token: string): boolean {
-  const data = getAuthData();
+export async function verifyAndEnable2FA(token: string): Promise<boolean> {
+  const data = await getAuthData();
   const tempSecret = data.twoFactor?.tempSecret;
   if (!tempSecret) return false;
 
@@ -105,9 +115,9 @@ export function verifyAndEnable2FA(token: string): boolean {
   return false;
 }
 
-export function disable2FA(currentPassword: string): { success: boolean; error?: string } {
-  const data = getAuthData();
-  if (currentPassword !== data.password) {
+export async function disable2FA(currentPassword: string): Promise<{ success: boolean; error?: string }> {
+  const data = await getAuthData();
+  if (!verifyPassword(currentPassword, data.password)) {
     return { success: false, error: 'Mật khẩu hiện tại không chính xác' };
   }
 
@@ -117,12 +127,14 @@ export function disable2FA(currentPassword: string): { success: boolean; error?:
     tempSecret: '',
   };
   data.updatedAt = new Date().toISOString();
-  saveAuthData(data);
+  if (!(await saveAuthData(data))) {
+    return { success: false, error: 'Không thể lưu cấu hình bảo mật' };
+  }
   return { success: true };
 }
 
-export function verify2FAToken(token: string): boolean {
-  const data = getAuthData();
+export async function verify2FAToken(token: string): Promise<boolean> {
+  const data = await getAuthData();
   if (!data.twoFactor?.enabled || !data.twoFactor?.secret) {
     return true; // If 2FA not enabled, passes
   }
