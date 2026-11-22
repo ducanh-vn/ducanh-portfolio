@@ -1,4 +1,5 @@
 import { ExternalLink, FileText, Sparkles, Printer, LayoutTemplate, Palette } from 'lucide-react';
+import { CV_STUDIO_URL } from '@/constants/portfolio';
 
 interface CvTabProps {
   cvUrl: string;
@@ -23,8 +24,9 @@ export default function CvTab({ cvUrl, onCvUrlChange }: CvTabProps) {
           </div>
 
           <a
-            href="/cv"
+            href={CV_STUDIO_URL}
             target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-[#f1f505] text-black font-semibold text-xs uppercase tracking-wider hover:bg-[#e0e404] transition-all shadow-lg shadow-[#f1f505]/10"
           >
             <Sparkles className="w-4 h-4" />
@@ -45,17 +47,17 @@ export default function CvTab({ cvUrl, onCvUrlChange }: CvTabProps) {
 
           <div className="max-w-md space-y-2">
             <label className="block text-[11px] font-mono uppercase text-neutral-400">
-              Đường dẫn CV (Mặc định: /cv)
+              Đường dẫn CV (Mặc định: CV Studio)
             </label>
             <input
               type="text"
               value={cvUrl}
               onChange={(e) => onCvUrlChange(e.target.value)}
-              placeholder="/cv hoặc link PDF Drive..."
+              placeholder={`${CV_STUDIO_URL} hoặc link PDF Drive...`}
               className="w-full bg-[#111] border border-neutral-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#f1f505]"
             />
             <p className="text-[11px] text-neutral-500">
-              Mẹo: Để nguyên <code className="text-[#f1f505]">/cv</code> để người xem mở thẳng trình xem CV trực quan và in file PDF bất kỳ lúc nào.
+              Mẹo: Dùng <code className="text-[#f1f505]">{CV_STUDIO_URL}</code> để người xem mở thẳng trình xem CV trực quan và in file PDF bất kỳ lúc nào.
             </p>
           </div>
         </div>

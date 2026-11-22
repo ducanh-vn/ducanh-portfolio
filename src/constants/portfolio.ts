@@ -10,3 +10,6 @@ export const VIEW_TRANSITION_REVEAL_MS = 500;
 
 /** Project modal keeps its content mounted this long while fading out (ms). */
 export const MODAL_EXIT_MS = 400;
+
+/** Hosted CV Studio app; default target of the DOWNLOAD CV button. */
+export const CV_STUDIO_URL = 'https://cv-studio-sass.vercel.app/';

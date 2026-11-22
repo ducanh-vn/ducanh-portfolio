@@ -11,7 +11,7 @@
     "github": "https://github.com/ducanh-vn",
     "linkedin": "https://linkedin.com/in/ducanh-vn",
     "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=700&q=80",
-    "cvUrl": "http://localhost:3001"
+    "cvUrl": "https://cv-studio-sass.vercel.app/"
   },
   "skills": [
     "React",
@@ -48,7 +48,7 @@
         "SaaS",
         "AI ATS"
       ],
-      "liveDemo": "http://localhost:3001",
+      "liveDemo": "https://cv-studio-sass.vercel.app/",
       "github": "https://github.com/ducanh-vn/cv-studio",
       "features": [
         {
