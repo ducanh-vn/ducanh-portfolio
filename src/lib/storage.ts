@@ -5,11 +5,13 @@ import { MEDIA_ROUTE } from '@/constants/storage';
 
 /**
  * Server-only storage. On Vercel the deployment filesystem is read-only, so data and
- * uploads go to a private Vercel Blob store when BLOB_READ_WRITE_TOKEN is set; locally
- * they use disk. Private blobs are served to browsers through /api/media.
+ * uploads go to a private Vercel Blob store when BLOB_STORE_ID (OIDC) or
+ * BLOB_READ_WRITE_TOKEN is set; locally they use disk. Private blobs are served to
+ * browsers through /api/media.
  */
 export function hasBlobStore(): boolean {
-  return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
+  // Either a classic read-write token, or a store id used with Vercel OIDC (the SDK picks it up)
+  return Boolean(process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_STORE_ID);
 }
 
 /** Read a JSON blob straight from origin (no CDN cache). Returns null if it does not exist yet. */
