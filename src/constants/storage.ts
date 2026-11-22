@@ -14,3 +14,6 @@ export const ALLOWED_IMAGE_TYPES: Record<string, string> = {
   'image/gif': 'gif',
   'image/avif': 'avif',
 };
+
+/** Route that streams private Blob files (avatars) to the browser. */
+export const MEDIA_ROUTE = '/api/media';
