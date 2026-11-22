@@ -22,3 +22,9 @@ export function putPortfolio(data: PortfolioData): Promise<Response> {
     body: JSON.stringify(data),
   });
 }
+
+export function uploadAvatar(file: File): Promise<Response> {
+  const form = new FormData();
+  form.append('file', file);
+  return fetch('/api/upload', { method: 'POST', body: form });
+}

@@ -18,7 +18,7 @@ export function usePortfolioEditor(initialData: PortfolioData) {
 
   // Profile
   const updateProfile = (field: keyof ProfileData, val: string) => {
-    setData({ ...data, profile: { ...data.profile, [field]: val } });
+    setData((prev) => ({ ...prev, profile: { ...prev.profile, [field]: val } }));
   };
 
   // Projects

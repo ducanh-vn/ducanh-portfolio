@@ -1,4 +1,5 @@
 import type { ProfileData } from '@/types/portfolio';
+import AvatarField from './AvatarField';
 import { ADMIN_INPUT_CLASS, ADMIN_LABEL_CLASS, PROFILE_FIELDS } from '@/constants/admin';
 
 interface ProfileTabProps {
@@ -13,6 +14,8 @@ export default function ProfileTab({ profile, onChange }: ProfileTabProps) {
       <h2 className="font-serif text-2xl uppercase tracking-wider text-white border-b border-neutral-800 pb-4">
         Hồ sơ cá nhân
       </h2>
+
+      <AvatarField value={profile.avatar} onChange={(url) => onChange('avatar', url)} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {PROFILE_FIELDS.map((field) => (
