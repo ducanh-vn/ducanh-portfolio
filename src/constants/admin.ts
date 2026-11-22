@@ -62,3 +62,6 @@ export const PROFILE_FIELDS: ProfileFieldConfig[] = [
   { key: 'github', label: 'Link GitHub', type: 'text' },
   { key: 'linkedin', label: 'Link LinkedIn', type: 'text' },
 ];
+
+/** Viewport at which the admin switches from the mobile drawer to the fixed sidebar (Tailwind `md`). */
+export const DESKTOP_NAV_QUERY = '(min-width: 768px)';
